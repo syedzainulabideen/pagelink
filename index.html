@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open My App</title>
+</head>
+<body>
+    <h1>Open My App</h1>
+    <a href="#" onclick="openApp()">Open the App</a>
+
+    <script>
+        function openApp() {
+            var appScheme = "Ooredoo://Offers"; // Replace with your app's custom URL scheme
+            var appStoreURL = "https://apps.apple.com/app/619828745"; // Replace with your App Store URL
+
+            var now = new Date().getTime();
+            var timeout = 1500;
+
+            // Attempt to open the app using the custom URL scheme
+            window.location = appScheme;
+
+            // After a short delay, check if the app was opened. If not, redirect to the App Store.
+            setTimeout(function () {
+                if (new Date().getTime() - now < timeout + 100) {
+                    // App was not opened, redirect to the App Store
+                    window.location = appStoreURL;
+                }
+            }, timeout);
+        }
+    </script>
+</body>
+</html>
